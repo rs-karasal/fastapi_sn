@@ -1,10 +1,11 @@
 from fastapi import FastAPI, Depends
 from fastapi_users import FastAPIUsers
 
-from auth.auth import auth_backend
-from auth.database import User
-from auth.manager import get_user_manager
-from auth.schemas import UserRead, UserCreate
+from code.auth.auth import auth_backend
+from code.auth.database import User
+from code.auth.manager import get_user_manager
+from code.auth.schemas import UserRead, UserCreate
+
 
 main_app = FastAPI(
     title="Social Network",
@@ -31,6 +32,7 @@ main_app.include_router(
 
 
 current_user = fastapi_users.current_user()
+
 
 @main_app.get("/protected-route")
 def protected_route(user: User = Depends(current_user)):

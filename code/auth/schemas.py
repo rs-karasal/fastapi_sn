@@ -4,9 +4,6 @@ from typing import Optional
 from fastapi_users import schemas
 
 
-PYDANTIC_V2 = PYDANTIC_VERSION.startswith("2.")
-
-
 class UserRead(schemas.BaseUser[int]):
     id: int
     name: str
